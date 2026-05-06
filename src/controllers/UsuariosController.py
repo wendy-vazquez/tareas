@@ -6,19 +6,22 @@ class AuthController:
     def __init__(self):
         self.model = UsuariosModel()
 
-    def registrar_usuario(self, nombre, email, password):
+    def registrar_usuario(self, nombre, ap_paterno, ap_materno, nombre_usuario, correo, contrasena):
         try:
-            # validar datos con el Schema
-            nuevo_usuario = UsuariosSchema(
-                nombre=nombre,
-                email=email,
-                password=password
-            )
-
-            success = self.model.registrar(nuevo_usuario.dict())
-
+            success = self.model.registrar({
+                'nombre': nombre,
+                'apellido_paterno': ap_paterno,
+                'apellido_materno': ap_materno,
+                'nombre_usuario': nombre_usuario,
+                'correo': correo,
+                'contrasena': contrasena
+            })
             return success, "Usuario creado correctamente"
-
         except ValidationError as e:
             return False, e.errors()[0]['msg']
-        
+
+    def login(self, email, password):
+        user = self.model.validar_login(email, password)
+        if user:
+            return user, "OK"
+        return None, "Credenciales incorrectas"
