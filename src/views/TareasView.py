@@ -9,7 +9,7 @@ def TareasView(page: ft.Page, tarea_controller, state):
     def refresh():
         lista_tareas.controls.clear()
         for t in tarea_controller.obtener_lista(user['id_usuario']):
-            color = ft.Colors.GREEN_300 if t['realizada'] else ft.Colors.ORANGE_300
+            color = ft.Colors.PINK_200 if t['realizada'] else ft.Colors.PINK_400
             estado = "Hecha" if t['realizada'] else "Pendiente"
             nuevo_estado = 0 if t['realizada'] else 1
             id_tarea = t['id_tarea']
@@ -69,6 +69,7 @@ def TareasView(page: ft.Page, tarea_controller, state):
         controls=[
             ft.AppBar(
                 title=ft.Text(f"Hola, {user['nombre']} 👋"),
+                bgcolor="#C2185B",
                 actions=[ft.IconButton(ft.Icons.LOGOUT, tooltip="Cerrar sesión", on_click=logout)]
             ),
             ft.Container(

@@ -6,6 +6,14 @@ from views.UsuariosView import RegistroView
 from views.TareasView import TareasView
 
 def start(page: ft.Page):
+    page.theme = ft.Theme(
+        color_scheme=ft.ColorScheme(
+            primary="#FF69B4",
+            secondary="#FFB6C1",
+            surface="#FFF0F5",
+        )
+    )
+    page.bgcolor = "#FFF0F5"
     try:
         auth_ctrl = AuthController()
         tarea_ctrl = TareaController()

@@ -58,7 +58,7 @@ def LoginView(page: ft.Page, auth_controller, state):
         route="/login",
         vertical_alignment=ft.MainAxisAlignment.CENTER,
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-        bgcolor=ft.Colors.SURFACE,
+        bgcolor="#FFF0F5",
         controls=[
             ft.Card(
                 elevation=4, width=380,
